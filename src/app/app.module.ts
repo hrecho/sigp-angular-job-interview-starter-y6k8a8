@@ -13,16 +13,38 @@ import { ListComponent } from './list/list.component';
 import { ListModule } from './list/list.module';
 import { DetailModule } from './detail/detail.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { LogoComponent } from './logo/logo.component';
 
 const appRoutes: Routes = [
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
   {
     path: 'home',
     component: HomeComponent,
   },
+/*
+  {
+    path: 'list/:ID',
+    loadChildren: './detail/detail.module#DetailModule',
+  },
+
+  {
+    path: 'list',
+    pathMatch: 'full',
+    loadChildren: './list/list.module#ListModule',    
+  },
+*/
+  {
+    path: 'list/:ID',
+    component: DetailComponent
+  },
   {
     path: 'list',
     component: ListComponent
-  }
+  },
 ];
 
 @NgModule({

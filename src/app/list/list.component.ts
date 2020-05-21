@@ -60,10 +60,15 @@ export class ListComponent implements OnInit {
           return observableOf([]);
         })
       ).subscribe(data => this.data = data);
+
+
+      this.filter.valueChanges.subscribe(val => {
+        this.data = this.data.filter((item) => item['title'].includes(this.filter.value))
+      })
   }
 
   openDetail(id: number) {
-    alert(`open detail ${id}`);
+    this.router.navigateByUrl('list/' + id);
   }
 }
 
